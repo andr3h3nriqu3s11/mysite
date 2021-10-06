@@ -39,7 +39,10 @@
 		<a class="no-color-visited" href="https://www.surrey.ac.uk/undergraduate/computer-science"
 			>Surrey University</a
 		>
-		and looking for a placement for the year 2022!
+		and looking for a placement for the year 2022! <br />
+		<br />
+		You can contact
+		<a class="no-color-visited" href="mailto:andr3h3nriqu3s@gmail.com">by email</a>.
 	</div>
 	<div class="flex justify-center bigger-link">
 		<a href="https://github.com/andr3h3nriqu3s11"> <!--github--> <span class="bi bi-github" /> </a>
