@@ -1,6 +1,6 @@
 # My website
 
-This is the website for the [andr3h3nriqu3s.com](andr3h3nriqu3s.com)
+This is the website for the [andr3h3nriqu3s.com](https://andr3h3nriqu3s.com)
 
 ## Developing
 
