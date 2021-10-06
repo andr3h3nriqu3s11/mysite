@@ -1,11 +1,10 @@
 <script lang="ts">
+	import HideShow from '../components/HideShow.svelte';
 	import { onMount } from 'svelte';
 
 	function isDarkModeEnabled() {
 		if (typeof window !== 'undefined' && typeof window.matchMedia !== 'undefined') {
-			const mediaQueryString = '(prefers-color-scheme: dark)';
-
-			return window.matchMedia(mediaQueryString).matches;
+			return window.matchMedia('(prefers-color-scheme: dark)').matches;
 		} else {
 			//throw new Error('matchMedia is not supported');
 			return false;
@@ -19,16 +18,28 @@
 	});
 </script>
 
+<button
+	on:click={() => {
+		darkmode = !darkmode;
+	}}
+	class="change-mode bigger-link"
+>
+	{#if darkmode}
+		<span class="bi bi-moon" />
+	{:else}
+		<span class="bi bi-sun" />
+	{/if}
+</button>
+
 <main class:darkmode>
 	<h1>Welcome</h1>
 	<div>
-		I'm <strong>Andre Henriques</strong>; I am a software developer and designer who is currently
+		I am <strong>Andre Henriques</strong>; I am a software developer and designer who is currently
 		studying at
 		<a class="no-color-visited" href="https://www.surrey.ac.uk/undergraduate/computer-science"
 			>Surrey University</a
 		>
 		and looking for a placement for the year 2022!
-		<!-- To add placement-->
 	</div>
 	<div class="flex justify-center bigger-link">
 		<a href="https://github.com/andr3h3nriqu3s11"> <!--github--> <span class="bi bi-github" /> </a>
@@ -40,9 +51,80 @@
 	<div>
 		<!-- To add cv-->
 	</div>
+	<div class="segment">
+		<span class="h1">Currently working on</span>
+		<HideShow>
+			<div class="inside">
+				<div class="h2">Personal projects that I am working on rigth now:</div>
+				<div class="inside">
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/todoapp">
+							Todo App
+						</a> - A todo app with some game elements for android app written in flutter
+					</div>
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/timeprocess">
+							Timeprocess
+						</a> - A simple command line utility that works like a clocking out/in system
+					</div>
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/mysite">
+							This Website
+						</a> - Well... this Website
+					</div>
+				</div>
+			</div>
+		</HideShow>
+	</div>
+	<div class="segment">
+		<span class="h1">Completed experiments</span>
+		<HideShow>
+			<div class="inside">
+				<div class="h2">
+					Small projects that I used to test out a technology or a language, but that are now mostly
+					finished!
+				</div>
+				<div class="inside">
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/humming-detector">
+							Frequency detector
+						</a> - A simple program written in rust that uses a Fourier transform to separate audio into
+						multiple frequencies
+					</div>
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/pen-trainer">
+							Pen trainer
+						</a> - A simple program written in Go to help me get used to a graphic table that I got
+					</div>
+					<div class="space">
+						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/tube-solver">
+							Tube Solver
+						</a> - A simple command tool utility to solve the tube sort style games written in C
+					</div>
+				</div>
+			</div>
+		</HideShow>
+	</div>
+	<div class="segment">
+		<span class="h1">What I want to try out?</span>
+		<HideShow>
+			<div class="inside">
+				<div class="h2">
+					Areas that I want to explore but haven't had the time to try out, and how I plan to try
+					them out:
+				</div>
+				<div class="inside">
+					<div class="space">
+						Machine Learning - Train an AI to recognize my voice and what I say
+					</div>
+					<div class="space">VR - Create a simple game</div>
+				</div>
+			</div></HideShow
+		>
+	</div>
 </main>
 <footer class="flex justify-center copy">
-	<div>Copyrigth &copy; Andre Henriques 2021. All Rigths Reserved;</div>
+	<div>Copyright &copy; Andre Henriques 2021. All Rights Reserved;</div>
 </footer>
 
 <svelte:head>
@@ -52,6 +134,15 @@
 			body {
 				background: #2a2a2a;
 				color: white;
+				transition: color 0.5s;
+				transition: background 0.5s;
+			}
+		</style>
+	{:else}
+		<style>
+			body {
+				transition: color 0.5s;
+				transition: background 0.5s;
 			}
 		</style>
 	{/if}
@@ -122,5 +213,30 @@
 	}
 	.copy div {
 		font-size: 1rem;
+	}
+	.h1 {
+		font-size: 2rem;
+	}
+	.h2 {
+		font-size: 1.5rem;
+	}
+	.segment {
+		margin-top: 20px;
+	}
+	.segment .inside {
+		margin-left: 2ch;
+	}
+	.segment .space {
+		margin: 20px 0px;
+	}
+	.change-mode {
+		position: absolute;
+		right: 2rem;
+		top: 0px;
+		margin-top: 0.5rem;
+		font-size: 1.5rem;
+		outline: none;
+		border: none;
+		background: none;
 	}
 </style>

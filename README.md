@@ -1,5 +1,7 @@
 # My website
 
+This is the website for the [andr3h3nriqu3s.com](andr3h3nriqu3s.com)
+
 ## Developing
 
 Run server for dev
@@ -13,8 +15,8 @@ yarn run dev -- --open
 
 ## Building
 
-Create a build server
+This will use the static adapter to create a static build of the website.
 
 ```bash
-npm run build
+yarn run build
 ```
