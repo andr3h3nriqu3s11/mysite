@@ -183,17 +183,19 @@
 	}
 	.bigger-link a {
 		transition: color 0.75s;
+		color: white;
 	}
 	.bigger-link .divider {
 		height: 2rem;
 		margin: 0rem 1rem;
 		border: 2px solid #6d6f71;
+		background-color: #6d6f71;
 	}
 	.bigger-link a:visited {
 		font-size: 2rem;
 		color: #6d6f71;
 	}
-	.bigger-link a:hover {
+	:global(.bigger-link a:hover) {
 		font-size: 2rem;
 		color: rgb(54, 55, 56);
 		transition: color 0.25s;
@@ -241,5 +243,21 @@
 		outline: none;
 		border: none;
 		background: none;
+	}
+	@media only screen and (max-width: 500px) {
+		:global(body) {
+			text-align: center;
+		}
+		main {
+			margin-top: 50px;
+			width: 98vw;
+			min-height: calc(100vh - 2rem - 50px);
+		}
+		.segment .h1 {
+			display: block;
+		}
+		.segment .inside {
+			margin-left: 0px;
+		}
 	}
 </style>
