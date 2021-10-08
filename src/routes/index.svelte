@@ -185,6 +185,9 @@
 		transition: color 0.75s;
 		color: white;
 	}
+	.darkmode .bigger-link a {
+		color: black;
+	}
 	.bigger-link .divider {
 		height: 2rem;
 		margin: 0rem 1rem;
