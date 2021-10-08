@@ -183,7 +183,7 @@
 	}
 	.bigger-link a {
 		transition: color 0.75s;
-		color: white;
+		color: #6d6f71;
 	}
 	.darkmode .bigger-link a {
 		color: black;
