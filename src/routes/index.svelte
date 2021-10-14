@@ -51,7 +51,10 @@
 			<!-- linkedin --> <span class="bi bi-linkedin" /></a
 		>
 	</div>
-	<div>
+	<div class="center-btt">
+		<button on:click={() => window.open('https://andr3h3nriqu3s.com/CV.pdf', '_blank')}>
+			Resume
+		</button>
 		<!-- To add cv-->
 	</div>
 	<div class="segment">
@@ -152,6 +155,10 @@
 </svelte:head>
 
 <style>
+	:root {
+		--c--blue: rgb(14, 142, 185);
+		--c--blue-darker: rgb(8, 112, 160);
+	}
 	:global(body) {
 		padding: 0;
 		margin: 0;
@@ -246,6 +253,26 @@
 		outline: none;
 		border: none;
 		background: none;
+	}
+	.center-btt {
+		display: grid;
+		place-items: center;
+		margin-top: 1rem;
+	}
+	.center-btt button {
+		background-color: var(--c--blue);
+		color: white;
+		font-size: 1.25rem;
+		padding: 0.5em;
+		border: none;
+		outline: none;
+		border-radius: 5px;
+		box-shadow: 2px 2px 10px rgb(53, 53, 53);
+		transition: background-color 0.5s;
+	}
+	.center-btt button:hover {
+		background-color: var(--c--blue-darker);
+		transition: background-color 0.5s;
 	}
 	@media only screen and (max-width: 500px) {
 		:global(body) {
