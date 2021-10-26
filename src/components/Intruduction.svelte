@@ -38,7 +38,7 @@
 
 <style>
 	.intro {
-		height: 100vh;
+		min-height: 100vh;
 		scroll-snap-align: start;
 	}
 	h1 {

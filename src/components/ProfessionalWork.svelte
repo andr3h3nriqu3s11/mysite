@@ -54,7 +54,7 @@
 	}
 	section {
 		margin-top: 20px;
-		height: 100vh;
+		min-height: 100vh;
 	}
 	@media only screen and (max-width: 500px) {
 		section .h1 {
