@@ -30,9 +30,7 @@
 		<div class="h1 text-center" style="margin-bottom: 1.2rem;">
 			Check if the version of my CV you have is the newest
 		</div>
-		<button on:click={() => window.open('https://andr3h3nriqu3s.com/CV.pdf', '_blank')}>
-			View CV
-		</button>
+		<button on:click={() => window.open('/André_Henriques_CV.pdf', '_blank')}> View CV </button>
 	</div>
 </section>
 
