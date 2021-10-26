@@ -1,5 +1,6 @@
-<script>
-	let show = false;
+<script type="ts">
+	export let startShow: boolean = false;
+	let show = startShow;
 </script>
 
 <button
