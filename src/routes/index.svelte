@@ -1,6 +1,11 @@
 <script lang="ts">
-	import HideShow from '../components/HideShow.svelte';
 	import { onMount } from 'svelte';
+
+	import '../css/generic.css';
+	import ProfessionalWork from '../components/ProfessionalWork.svelte';
+	import Intruduction from '../components/Intruduction.svelte';
+	import Sidebar from '../components/Sidebar.svelte';
+	import PersonalProjects from '../components/PersonalProjects.svelte';
 
 	function isDarkModeEnabled() {
 		if (typeof window !== 'undefined' && typeof window.matchMedia !== 'undefined') {
@@ -16,122 +21,44 @@
 	onMount(() => {
 		darkmode = isDarkModeEnabled();
 	});
+
+	let intruductionH = 0;
+	let professionalH = 0;
+	let personalH = 0;
 </script>
 
-<button
-	on:click={() => {
-		darkmode = !darkmode;
-	}}
-	class="change-mode bigger-link"
->
-	{#if darkmode}
-		<span class="bi bi-moon" />
-	{:else}
-		<span class="bi bi-sun" />
-	{/if}
-</button>
+<div class="fullw">
+	<Sidebar
+		items={[
+			{ name: 'About me', link: '#about', height: intruductionH - 200 },
+			{ name: 'Professional work', link: '#work', height: professionalH - 20 },
+			{ name: 'Personal projects', link: '#personal', height: personalH }
+		]}
+		{darkmode}
+	/>
 
-<main class:darkmode>
-	<h1>Welcome</h1>
-	<div>
-		I am <strong>Andre Henriques</strong>; I am a software developer and designer who is currently
-		studying at
-		<a class="no-color-visited" href="https://www.surrey.ac.uk/undergraduate/computer-science"
-			>Surrey University</a
-		>
-		and looking for a placement for the year 2022! <br />
-		<br />
-		You can contact
-		<a class="no-color-visited" href="mailto:andr3h3nriqu3s@gmail.com">by email</a>.
-	</div>
-	<div class="flex justify-center bigger-link">
-		<a href="https://github.com/andr3h3nriqu3s11"> <!--github--> <span class="bi bi-github" /> </a>
-		<span class="divider" />
-		<a href="https://www.linkedin.com/in/andre-henriques-0240b1205/">
-			<!-- linkedin --> <span class="bi bi-linkedin" /></a
-		>
-	</div>
-	<div class="center-btt">
-		<button on:click={() => window.open('https://andr3h3nriqu3s.com/CV.pdf', '_blank')}>
-			Resume
-		</button>
-		<!-- To add cv-->
-	</div>
-	<div class="segment">
-		<span class="h1">Currently working on</span>
-		<HideShow>
-			<div class="inside">
-				<div class="h2">Personal projects that I am working on rigth now:</div>
-				<div class="inside">
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/todoapp">
-							Todo App
-						</a> - A todo app with some game elements for android app written in flutter
-					</div>
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/timeprocess">
-							Timeprocess
-						</a> - A simple command line utility that works like a clocking out/in system
-					</div>
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/mysite">
-							This Website
-						</a> - Well... this Website
-					</div>
-				</div>
-			</div>
-		</HideShow>
-	</div>
-	<div class="segment">
-		<span class="h1">Completed experiments</span>
-		<HideShow>
-			<div class="inside">
-				<div class="h2">
-					Small projects that I used to test out a technology or a language, but that are now mostly
-					finished!
-				</div>
-				<div class="inside">
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/humming-detector">
-							Frequency detector
-						</a> - A simple program written in rust that uses a Fourier transform to separate audio into
-						multiple frequencies
-					</div>
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/pen-trainer">
-							Pen trainer
-						</a> - A simple program written in Go to help me get used to a graphic table that I got
-					</div>
-					<div class="space">
-						<a class="no-color-visited" href="https://github.com/andr3h3nriqu3s11/tube-solver">
-							Tube Solver
-						</a> - A simple command tool utility to solve the tube sort style games written in C
-					</div>
-				</div>
-			</div>
-		</HideShow>
-	</div>
-	<div class="segment">
-		<span class="h1">What I want to try out?</span>
-		<HideShow>
-			<div class="inside">
-				<div class="h2">
-					Areas that I want to explore but haven't had the time to try out, and how I plan to try
-					them out:
-				</div>
-				<div class="inside">
-					<div class="space">
-						Machine Learning - Train an AI to recognize my voice and what I say
-					</div>
-					<div class="space">VR - Create a simple game</div>
-				</div>
-			</div></HideShow
-		>
-	</div>
-</main>
-<footer class="flex justify-center copy">
-	<div>Copyright &copy; Andre Henriques 2021. All Rights Reserved;</div>
-</footer>
+	<button
+		on:click={() => {
+			darkmode = !darkmode;
+		}}
+		class="change-mode bigger-link"
+	>
+		{#if darkmode}
+			<span class="bi bi-moon" />
+		{:else}
+			<span class="bi bi-sun" />
+		{/if}
+	</button>
+
+	<main class:darkmode>
+		<Intruduction bind:h={intruductionH} {darkmode} />
+		<ProfessionalWork bind:h={professionalH} {darkmode} />
+		<PersonalProjects {darkmode} bind:h={personalH} />
+	</main>
+	<footer class="flex justify-center copy">
+		<div>Copyright &copy; Andre Henriques 2021. All Rights Reserved;</div>
+	</footer>
+</div>
 
 <svelte:head>
 	<title>Andre Henriques</title>
@@ -139,6 +66,7 @@
 		<style>
 			body {
 				background: #2a2a2a;
+				/*background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(42, 42, 42, 1) 10%);*/
 				color: white;
 				transition: color 0.5s;
 				transition: background 0.5s;
@@ -155,29 +83,22 @@
 </svelte:head>
 
 <style>
-	:root {
-		--c--blue: rgb(14, 142, 185);
-		--c--blue-darker: rgb(8, 112, 160);
-	}
 	:global(body) {
 		padding: 0;
 		margin: 0;
-		display: grid;
-		justify-content: center;
+		scroll-snap-type: y mandatory;
 	}
 	main {
-		margin-top: 50px;
-		width: 50vw;
+		margin-top: -150px;
 		min-height: calc(100vh - 2rem - 50px);
-	}
-	.flex {
-		display: flex;
-	}
-	.justify-center {
+		display: grid;
 		justify-content: center;
+		width: 50vw;
 	}
-	h1 {
-		font-size: 3rem;
+	.fullw {
+		width: 99vw;
+		display: grid;
+		place-items: center;
 	}
 	div {
 		font-size: 1.5rem;
@@ -188,61 +109,8 @@
 		font-size: 2rem;
 		color: #6d6f71;
 	}
-	.bigger-link a {
-		transition: color 0.75s;
-		color: #6d6f71;
-	}
-	.darkmode .bigger-link a {
-		color: black;
-	}
-	.bigger-link .divider {
-		height: 2rem;
-		margin: 0rem 1rem;
-		border: 2px solid #6d6f71;
-		background-color: #6d6f71;
-	}
-	.bigger-link a:visited {
-		font-size: 2rem;
-		color: #6d6f71;
-	}
-	:global(.bigger-link a:hover) {
-		font-size: 2rem;
-		color: rgb(54, 55, 56);
-		transition: color 0.25s;
-	}
-	.darkmode .bigger-link a:hover {
-		font-size: 2rem;
-		color: #bcbcbc;
-		transition: color 0.25s;
-	}
-	.no-color-visited {
-		color: rgb(14, 142, 185);
-		text-decoration: none;
-	}
-	.no-color-visited:visited {
-		color: rgb(14, 142, 185);
-		text-decoration: none;
-	}
-	.no-color-visited:hover {
-		color: rgb(8, 112, 160);
-	}
 	.copy div {
 		font-size: 1rem;
-	}
-	.h1 {
-		font-size: 2rem;
-	}
-	.h2 {
-		font-size: 1.5rem;
-	}
-	.segment {
-		margin-top: 20px;
-	}
-	.segment .inside {
-		margin-left: 2ch;
-	}
-	.segment .space {
-		margin: 20px 0px;
 	}
 	.change-mode {
 		position: absolute;
@@ -254,40 +122,20 @@
 		border: none;
 		background: none;
 	}
-	.center-btt {
-		display: grid;
-		place-items: center;
-		margin-top: 1rem;
-	}
-	.center-btt button {
-		background-color: var(--c--blue);
-		color: white;
-		font-size: 1.25rem;
-		padding: 0.5em;
-		border: none;
-		outline: none;
-		border-radius: 5px;
-		box-shadow: 2px 2px 10px rgb(53, 53, 53);
-		transition: background-color 0.5s;
-	}
-	.center-btt button:hover {
-		background-color: var(--c--blue-darker);
-		transition: background-color 0.5s;
-	}
 	@media only screen and (max-width: 500px) {
 		:global(body) {
 			text-align: center;
 		}
 		main {
-			margin-top: 50px;
 			width: 98vw;
 			min-height: calc(100vh - 2rem - 50px);
 		}
-		.segment .h1 {
-			display: block;
-		}
-		.segment .inside {
-			margin-left: 0px;
+	}
+	@media only screen and (max-width: 1100px) {
+		main {
+			margin-top: 50px;
+			width: 70vw;
+			min-height: calc(100vh - 2rem - 50px);
 		}
 	}
 </style>
