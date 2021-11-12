@@ -86,7 +86,7 @@
 	:global(body) {
 		padding: 0;
 		margin: 0;
-		scroll-snap-type: y mandatory;
+		/*scroll-snap-type: y mandatory;*/
 	}
 	main {
 		margin-top: -150px;
